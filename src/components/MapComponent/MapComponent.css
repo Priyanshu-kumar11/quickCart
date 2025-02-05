@@ -1,0 +1,19 @@
+
+
+.map-container {
+  margin-top: 30px;
+  width: 100%;
+  height: 500px;  
+  position: relative;
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 400px;  
+  }
+}

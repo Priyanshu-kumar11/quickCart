@@ -1,4 +1,3 @@
-/* General Container */
 .home-container {
   text-align: center;
   padding: 20px;
@@ -6,28 +5,24 @@
   margin: 0 auto;
 }
 
-/* Heading */
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Loading Message */
 .loading {
   font-size: 1.5rem;
   color: #007bff;
   margin-top: 20px;
 }
 
-/* No products found */
 .no-products {
   font-size: 1.2rem;
   color: red;
   margin-top: 20px;
 }
 
-/* Dropdown Menu for category selection */
 select {
   padding: 10px;
   margin: 10px;
@@ -61,7 +56,7 @@ select {
 }
 
 .product-item:hover {
-  transform: translateY(-10px); /* Add hover effect */
+  transform: translateY(-10px); 
 }
 
 .product-item h1 {
@@ -124,7 +119,18 @@ select {
     padding: 10px;
   }
 }
-/* In Home.css */
+.add-product-form{
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.form-group{
+  margin: 20px;
+  padding: 10px;
+}
 button {
   padding: 10px 15px;
   margin-top: 10px;
@@ -143,18 +149,4 @@ button:hover {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-.product-item {
-  position: relative;
-  padding: 15px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.product-item:hover {
-  transform: translateY(-10px);
 }

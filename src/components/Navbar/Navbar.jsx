@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useCart } from '../../contextApi/CartContext'; 
 
 const Navbar = () => {
-  const { cart } = useCart(); // Get cart from context
+  const { cart } = useCart(); 
 
   return (
     <div className='navbar'>

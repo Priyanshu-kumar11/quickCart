@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // To access URL parameters
-import axios from 'axios'; // For making API calls
+import { useParams } from 'react-router-dom'; 
+import axios from 'axios'; 
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -17,8 +17,9 @@ const UserProfile = () => {
         setLoading(false); // Set loading to false after data is fetched
       })
       .catch((error) => {
-        setError("Error fetching user data.",error);
+        setError("Error fetching user data."); // Fixed error handling
         setLoading(false); // Set loading to false if there's an error
+        console.error(error); // Log the actual error to console for debugging
       });
   }, [id]); // Re-fetch data if the 'id' changes
 

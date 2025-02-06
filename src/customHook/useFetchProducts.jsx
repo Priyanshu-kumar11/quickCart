@@ -1,30 +1,43 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useFetchProducts = () => {
+const useFetchProducts = (id = null) => {
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
+    // Fetch data using async/await
+    const fetchData = async () => {
+      setLoading(true);  
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate delay
-        const response = await axios.get('https://fakestoreapi.com/products');
-        console.log(response.data);
-        setProducts(response.data);
+        let response;
+        if (id) {
+        
+          response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+          setProduct(response.data);
+        } else {
+          
+          response = await axios.get('https://fakestoreapi.com/products');
+          setProducts(response.data);
+        }
       } catch (error) {
-        setError("Error fetching products.");
+       
+        setError("Error fetching data.");
+        console.error("Error fetching data:", error);
       } finally {
+       
         setLoading(false);
       }
     };
 
-    fetchProducts();
-  }, []);
+    fetchData(); 
 
-  return { products, loading, error };
+   
+  }, [id]);
+
+  return { products, product, loading, error };
 };
 
 export default useFetchProducts;

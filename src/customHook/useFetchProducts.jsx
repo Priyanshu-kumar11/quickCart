@@ -7,18 +7,21 @@ const useFetchProducts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      axios.get('https://fakestoreapi.com/products')
-        .then((response) => {
-          console.log(response.data);
-          setProducts(response.data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setError("Error fetching products.");
-          setLoading(false);
-        });
-    }, 2000);
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate delay
+        const response = await axios.get('https://fakestoreapi.com/products');
+        console.log(response.data);
+        setProducts(response.data);
+      } catch (error) {
+        setError("Error fetching products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   return { products, loading, error };

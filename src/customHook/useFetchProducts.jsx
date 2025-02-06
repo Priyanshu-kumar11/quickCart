@@ -16,10 +16,12 @@ const useFetchProducts = (id = null) => {
         if (id) {
         
           response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+          console.log(response.data);
           setProduct(response.data);
         } else {
           
           response = await axios.get('https://fakestoreapi.com/products');
+          console.log(response.data);
           setProducts(response.data);
         }
       } catch (error) {

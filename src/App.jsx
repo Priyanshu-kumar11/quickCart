@@ -41,7 +41,7 @@ function App() {
       ),
     },
     {
-      path: "/user/:id",  
+      path: "/users/:id",  
       element: (
         <>
           <Navbar />

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -10,34 +10,34 @@ import MapComponent from './components/MapComponent/MapComponent';
 import UserProfile from './components/UserProfile/UserProfile';
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: (
         <>
-        <Navbar />
-        <Home />
-        <Footer /></>
+          <Navbar />
+          <Home />
+          <Footer />
+        </>
       ),
     },
     {
       path: "/map",
       element: (
-       <>
-        <Navbar />
-        <MapComponent/>
-        <Footer />
-       </>
+        <>
+          <Navbar />
+          <MapComponent />
+          <Footer />
+        </>
       ),
     },
     {
       path: "/footer",
       element: (
-       <>
-         <Navbar />
-       
-        <Footer/>
-       </>
+        <>
+          <Navbar />
+          <Footer />
+        </>
       ),
     },
     {
@@ -49,7 +49,8 @@ function App() {
           <Footer />
         </>
       ),
-    },{
+    },
+    {
       path: "/cart",
       element: (
         <>
@@ -62,7 +63,7 @@ function App() {
   ]);
 
   return (
-    <CartProvider> {/* Wrap the entire app with CartProvider */}
+    <CartProvider> 
       <RouterProvider router={router} />
     </CartProvider>
   );

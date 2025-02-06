@@ -15,7 +15,7 @@ const Navbar = () => {
         <NavLink to="/cart" className="nav-link">
           Cart ({cart.length})
         </NavLink>
-        <NavLink to="/user/1" className="nav-link">User Profile</NavLink>
+        <NavLink to="/users/1" className="nav-link">User Profile</NavLink>
       </div>
     </div>
   );

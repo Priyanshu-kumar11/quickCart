@@ -18,27 +18,25 @@ const Home = () => {
   const { cart, addToCart, removeFromCart } = useCart(); 
   const navigate = useNavigate();
 
-  // Filter products based on selected category
+
   const filteredProducts = selectedCategory
     ? products.filter((product) => product.category.toLowerCase().includes(selectedCategory.toLowerCase()))
     : products;
 
-  // Handle category change
+
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  // Handle product form submission
   const handleSubmitProduct = async (e) => {
     e.preventDefault();
 
-    // Validate input
+   
     if (!newProduct.title || !newProduct.price || !newProduct.category || !newProduct.image) {
       setFormError('All fields are required.');
       return;
@@ -52,10 +50,10 @@ const Home = () => {
     setFormError('');
     
     try {
-      // Send the POST request to add the new product
+     
       const response = await axios.post('https://fakestoreapi.com/products', newProduct);
       console.log('Product added:', response.data);
-      // Optionally reset form
+    
       setNewProduct({ title: '', price: '', category: '', image: '' });
     } catch (error) {
       setFormError('Failed to add the product.');
@@ -67,11 +65,10 @@ const Home = () => {
     <div className="home-container">
       <h1>Product List</h1>
 
-      {/* Category Filter */}
       <div className="category-filter">
         <select value={selectedCategory} onChange={handleCategoryChange}>
           <option value="">Select a Category</option>
-          {/* Dynamically generate category options */}
+         
           {Array.from(new Set(products.map((product) => product.category))).map((category) => (
             <option key={category} value={category.toLowerCase()}>
               {category}
@@ -80,7 +77,7 @@ const Home = () => {
         </select>
       </div>
 
-      {/* Loading/Error Handling */}
+     
       {loading ? (
         <p className="loading">Loading products...</p>
       ) : error ? (
@@ -96,7 +93,7 @@ const Home = () => {
               <img src={product.image} alt={product.title} />
               <p>Category: {product.category}</p>
 
-              {/* Add/Remove buttons */}
+              
               {!cart.some((item) => item.id === product.id) ? (
                 <button onClick={() => addToCart(product)}>Add to Cart</button>
               ) : (
@@ -107,7 +104,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Form to add a new product */}
       <div className="add-product-form">
         <h2>Add New Product</h2>
         <form onSubmit={handleSubmitProduct}>

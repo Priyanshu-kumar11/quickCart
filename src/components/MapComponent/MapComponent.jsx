@@ -13,7 +13,6 @@ const MapComponent = () => {
 
   const [markers, setMarkers] = useState(initialMarkers);
 
-  // Function to add marker on map click
   const AddMarkerOnClick = () => {
     useMapEvents({
       click(e) {
@@ -36,20 +35,20 @@ const MapComponent = () => {
         scrollWheelZoom={true} 
         className="leaflet-map"
       >
-        {/* TileLayer: Map background */}
+       
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {/* Add markers dynamically */}
+       
         {markers.map((marker) => (
           <Marker key={marker.id} position={marker.position}>
             <Popup>{marker.title}</Popup>
           </Marker>
         ))}
 
-        {/* Add marker on map click */}
+     
         <AddMarkerOnClick />
       </MapContainer>
     </div>

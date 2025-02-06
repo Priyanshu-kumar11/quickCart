@@ -83,7 +83,7 @@ select {
   color: #777;
 }
 
-/* Mobile-friendly styling */
+
 @media (max-width: 768px) {
   .product-item h1 {
     font-size: 1rem;

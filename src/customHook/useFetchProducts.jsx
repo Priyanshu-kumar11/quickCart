@@ -8,7 +8,7 @@ const useFetchProducts = (id = null) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data using async/await
+  
     const fetchData = async () => {
       setLoading(true);  
       try {

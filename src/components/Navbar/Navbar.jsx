@@ -2,9 +2,11 @@ import React from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../contextApi/CartContext'; 
+import { useAuth } from '../../contextApi/AuthContext';  // ✅ Import Auth Context
 
 const Navbar = () => {
-  const { cart } = useCart(); 
+  const { cart } = useCart();
+  const { user, logout } = useAuth();  // ✅ Get login state & logout function
 
   return (
     <div className='navbar'>
@@ -16,9 +18,16 @@ const Navbar = () => {
           Cart ({cart.length})
         </NavLink>
         <NavLink to="/products/1" className="nav-link">Products</NavLink>
+        
+        {/* ✅ Show Logout if logged in, otherwise show Login */}
+        {user ? (
+          <button className="nav-link logout-btn" onClick={logout}>Logout</button>
+        ) : (
+          <NavLink to="/login" className="nav-link">Login</NavLink>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
